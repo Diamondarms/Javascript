@@ -7,15 +7,27 @@
     <title>ex001</title>
     <style>
         body{
-            background-color: rgb(133, 170, 219);
+            background-color: rgb(101, 82, 189);
             color: white;
             font: normal 20pt Arial;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
     <h1>Olá, mundo!</h1>
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, fugiat, magnam nam sit explicabo quos aliquid suscipit facere aspernatur placeat enim! Enim nobis sequi et qui sapiente earum quae sint.</p>
-    <script></script>
+
+    <script>
+        
+        /*var s = window.confirm('Tá curtindo?')
+        var nome = window.prompt('Teu nome?')
+        if (s) window.alert(nome + ' está curtindo')
+        else window.alert(nome + ' não está curtindo!')*/
+        var n1 = Number(window.prompt('Digite um número'));
+        var n2 = window.prompt('Digite outro número')
+        var soma = n1 + Number(n2);
+        alert(`O resultado da soma do número ${n1} e do número ${n2} é igual a ${soma}`);
+    </script>
 </body>
 </html>
