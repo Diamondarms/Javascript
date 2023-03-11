@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hora do dia</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgb(90, 85, 78);
+            text-align: center;
+            padding: 0px 30px;
+            margin: auto;
+        }
+        div#title{
+            color: white;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.301);
+        }
+        input{
+            border-radius: 10px;
+        }
+        input#nasc{
+            width: 100px;
+        }
+        main{
+            text-align: left;
+            font-size: 0.9em;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px 0px;
+            margin: auto;
+            min-width: 400px;
+            max-width: 600px;
+            box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.301);
+        }
+        main img{
+            /*background-color: blue;*/
+            width: 200px;
+            height: 200px;
+            margin-top: 30px;
+            border-radius: 50%;
+        }
+        main div{
+            margin: 0px;
+            padding: 15px 15px 0px 15px;
+        }
+        div#copyright{
+            margin: 20px;
+            color: white;
+            font-size: 0.9em;
+            font-style: italic;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.301);
+        }
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h1>Verificador de Idade</h1>
+    </div>
+    <main>
+        <div>Ano de Nascimento: <input type="number" name="nasc" id="nasc"></div>
+        <div>Sexo: 
+            <input type="radio" name="radsex" id="masc" checked> 
+            <label for="masc">Masculino</label>
+            <input type="radio" name="radsex" id="fem">
+            <label for="fem">Feminino</label>
+        </div>
+        <div><input type="button" value="Verificar" onclick="verificar()"></div>
+        <div id="res">Preencha os dados acima para ver o resultado!</div>
+    </main>
+    <div id="copyright">
+        @ Diamondarms
+    </div>
+
+    <script>    
+        function verificar(){
+            var data = new Date()
+            var ano = data.getFullYear()
+            var nasc = document.getElementById('nasc').value
+            var res = document.getElementById('res')
+
+            if  (nasc.length == 0 || nasc >= ano ){
+                res.innerText = "Data inválida, digite seu ano de nascimento."
+            } else {
+                var sex = document.getElementsByName('radsex')
+                var idade = ano - nasc;
+                var genero = sex[0].checked ? 'masculino' : 'feminino'
+
+                res.style.textAlign = 'center'
+                res.innerText = `Usuário do sexo ${genero} com ${idade} anos de idade.`
+
+                var img = document.createElement('img')
+                img.setAttribute('id', 'foto')
+
+                if (idade < 5){
+                    img.setAttribute('src', 'imagens/bebe.jpg')
+                } else if (idade < 24){
+                    img.src = sex[0].checked ? "imagens/homem-jovem.jpg" : "imagens/mulher-jovem.jpg"
+                } else if (idade < 60){
+                    img.src = sex[0].checked ? "imagens/homem-adulto.jpg" : "imagens/mulher-adulta.jpg"
+                } else {
+                    img.src = sex[0].checked ? "imagens/homem-idoso.jpg" : "imagens/mulher-idosa.jpg"
+                }
+                res.appendChild(img)
+            }
+        }
+    </script>
+</body>
+</html>

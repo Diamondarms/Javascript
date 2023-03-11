@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex005</title>
+    <style>
+        input.num{
+            padding: 5px;
+            border-radius: 10px;
+            border-width: 2px;
+            width: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Somando Valores</h1>
+    <input type="number" name="txt1" id="txt1" class="num"> +
+    <input type="number" name="txt2" id="txt2" class="num">
+    <input type="button" value="Somar" onclick="somar()">
+
+    <p id="resposta"></p>
+    <script>
+
+        function somar(){
+            var n1 = Number(window.document.getElementById('txt1').value)
+            var n2 = Number(document.querySelector('input#txt2').value)
+            var resp = document.getElementById('resposta')
+
+            resp.innerText = `A soma entre ${n1} e ${n2} é igual a ${n1+n2}.`;
+            
+        }
+    </script>
+</body>
+</html>

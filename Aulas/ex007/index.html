@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang=pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex007</title>
+</head>
+<body>
+    <h1>Cidadania Check</h1>
+    <p>Em que país você mora?</p>
+    <input type="text" name="pais" id="pais">
+    <input type="button" value="verificar" onclick="verificar()">
+    <div id="resposta"></div>
+    <script>
+        function verificar(){
+            var pais = document.getElementById('pais').value
+            var resp = document.getElementById('resposta')
+            if(pais.toUpperCase() == "BRASIL" || pais.toUpperCase() == 'BR')
+                resp.innerText = "Você é Brasileiro"
+             else if (pais == null)
+                resp.innerText = `Digite um país`
+             else 
+                resp.innerText = `Você é estrangeiro, pois seu país é ${pais}`
+            
+
+        }
+    </script>
+</body>
+</html>
