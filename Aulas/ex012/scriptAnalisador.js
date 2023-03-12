@@ -3,11 +3,11 @@ var sel = document.getElementById('seltab')
 var res = document.getElementById('res')
 var numeros = []
 
-
 function adicionar(){
 
     if(num.value.length == 0) {
         window.alert("Digite um valor")
+        num.focus()
         return;
     }
 
@@ -16,10 +16,12 @@ function adicionar(){
     if(numeros.indexOf(n) > -1){
         window.alert("Valor já existente")
         num.value = "";
+        num.focus()
         return;
     } else if (n > 100 || n < 1){
         window.alert("número fora dos limites")
         num.value = "";
+        num.focus()
         return;
     }
 
@@ -28,11 +30,21 @@ function adicionar(){
     op.innerText = `Valor ${n} adicionado`
     sel.appendChild(op)
 
+    res.innerHTML = ""
     num.value = "";
+    num.focus()
 }
 
 function finalizar(){
-    var sortedNumeros = numeros.sort()
+    if(numeros.length == 0){
+        window.alert("Adicione valores")
+        num.focus()
+        return;
+    }
+
+    res.innerHTML = ""
+
+    var sortedNumeros = numeros.sort(function(a, b){return a-b})
     var soma=0
     for(var c in numeros){
         soma+=numeros[c]
@@ -46,7 +58,7 @@ function finalizar(){
 }
 
 function criarDiv(text){
-    var div = document.createElement('div')
-    div.innerText = text;
-    res.appendChild(div)
+    var p = document.createElement('p')
+    p.innerText = text;
+    res.appendChild(p)
 }
